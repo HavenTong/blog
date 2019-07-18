@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/07/18/STL-Notes/</loc>
+        <lastmod>2019-07-18T09:27:43.535Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2017/03/18/hexo-theme-beantech/</loc>
-        <lastmod>2017-09-23T13:40:20.000Z</lastmod>
+        <lastmod>2019-07-18T09:23:52.445Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
