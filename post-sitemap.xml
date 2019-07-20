@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/07/20/Vue%E5%AE%9E%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
+        <lastmod>2019-07-20T13:54:43.602Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/07/18/STL-Notes/</loc>
         <lastmod>2019-07-18T09:27:43.535Z</lastmod>
         <changefreq>weekly</changefreq>
