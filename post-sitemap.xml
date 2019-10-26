@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/10/26/Spring-Boot-IDEA%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</loc>
+        <lastmod>2019-10-26T07:21:33.178Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/10/22/MongoDB%E5%9F%BA%E7%A1%80/</loc>
-        <lastmod>2019-10-22T05:30:09.445Z</lastmod>
+        <lastmod>2019-10-22T05:32:53.945Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

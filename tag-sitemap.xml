@@ -38,7 +38,14 @@
 
     <url>
         <loc>http://yoursite.com/tags/MongoDB/</loc>
-        <lastmod>2019-10-22T05:30:09.445Z</lastmod>
+        <lastmod>2019-10-22T05:32:53.945Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/IDEA-SpringBoot/</loc>
+        <lastmod>2019-10-26T07:21:33.178Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
