@@ -37,15 +37,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/IDEA-Spring-Boot/</loc>
-        <lastmod>2019-10-29T08:31:57.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/Spring-Boot/</loc>
-        <lastmod>2019-10-29T15:25:45.183Z</lastmod>
+        <lastmod>2019-10-31T08:15:58.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
