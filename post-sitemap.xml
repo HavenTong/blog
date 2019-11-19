@@ -7,16 +7,24 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2019/11/18/Spring-Boot-CORS/</loc>
-        <lastmod>2019-11-18T07:42:52.512Z</lastmod>
+        <loc>http://yoursite.com/2019/11/18/C++-priority-queue/</loc>
+        <lastmod>2019-11-19T11:52:23.886Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://yoursite.com/2019/11/18/C++-priority-queue/</loc>
-        <lastmod>2019-11-17T16:31:46.225Z</lastmod>
+        <loc>http://yoursite.com/2019/11/19/Serializable%E6%8E%A5%E5%8F%A3/</loc>
+        <lastmod>2019-11-19T11:49:59.393Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/11/18/Spring-Boot-CORS/</loc>
+        <lastmod>2019-11-18T07:56:02.947Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
