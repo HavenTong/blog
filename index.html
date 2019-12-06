@@ -143,14 +143,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -210,6 +210,46 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2019/12/06/redis-conf/">
+        <h2 class="post-title">
+            redis.conf
+        </h2>
+        <h3 class="post-subtitle">
+            redis配置文件
+        </h3>
+        <div class="post-content-preview">
+            redis.conf
+绑定的主机地址
+1bind 127.0.0.1
+如果需要远程访问，则需要注释掉
+守护进程
+1daemonize no
+Redis默认以非守护进程运行，如果想要改为守护进程，则设置为yes
+pidfile
+1pidfile /var/run/redis_6379.pid
+设置当Redis以守护进程运行时，它的pid写入的文件
+端口
+1port 6379
+指定Redis的端......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Haven Tong on
+            2019-12-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Redis" title="Redis">Redis</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -562,49 +602,6 @@ IDEA中下载后
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/09/28/SpringBoot配置/">
-        <h2 class="post-title">
-            SpringBoot配置
-        </h2>
-        <h3 class="post-subtitle">
-            Learning Spring Boot Configuration
-        </h3>
-        <div class="post-content-preview">
-            Spring Boot配置
-1. 标记语言
-
-
-以前的配置文件：xxx.xml
-
-
-YAML: 以数据为中心，比json, xml更适合作配置文件，实例如下
-  12server:  port: 8081
-XML:
-  123&lt;server&gt;	&lt;port&gt;8081&lt;/port&gt;&lt;/server&gt;
-
-
-2. YAML语法
-(1) 基本语法
-K :......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Haven Tong on
-            2019-09-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -639,6 +636,8 @@ K :......
     <!-- no hr -->
     <h5><a href="/tags/">FEATURED TAGS</a></h5>
     <div class="tags">
+        
+            
         
             
         
@@ -708,6 +707,10 @@ K :......
     <ul>
       
         <li>
+          <a href="/2019/12/06/redis-conf/">redis.conf</a>
+        </li>
+      
+        <li>
           <a href="/2019/11/19/Serializable接口/">Serializable接口</a>
         </li>
       
@@ -721,10 +724,6 @@ K :......
       
         <li>
           <a href="/2019/11/07/SpringBoot-Mybatis/">SpringBoot-Mybatis</a>
-        </li>
-      
-        <li>
-          <a href="/2019/10/31/Spring-Boot-JDBC/">Spring Boot-JDBC</a>
         </li>
       
     </ul>
