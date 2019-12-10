@@ -213,6 +213,36 @@
 
 <div class="post-preview">
 
+    <a href="/2019/12/10/Spring-Boot对静态方法进行打桩/">
+        <h2 class="post-title">
+            Spring Boot对静态方法进行打桩
+        </h2>
+        <h3 class="post-subtitle">
+            Unit Test in Spring Boot
+        </h3>
+        <div class="post-content-preview">
+            Spring Boot对静态方法进行打桩
+问题
+在对Spring Boot项目进行测试的时候，会对业务逻辑service层进行测试。而service层的代码可能会使用util中的工具类，而工具方法通常来说都是static类型的方法。问题在于，当对service层的代码进行测试时，我们往往需要对静态方法打桩，返回我们需要的结果。然而，主流的测试框架Mockito并不支持对静态方法的打桩。对于此......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Haven Tong on
+            2019-12-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2019/12/06/redis基本配置及开关/">
         <h2 class="post-title">
             redis基本配置及开关
@@ -576,43 +606,6 @@ JSON格式的数据响应
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/10/26/Spring-Boot-IDEA开发技巧/">
-        <h2 class="post-title">
-            Spring Boot-IDEA开发技巧
-        </h2>
-        <h3 class="post-subtitle">
-            use IDEA to work efficiently
-        </h3>
-        <div class="post-content-preview">
-            SpringBoot with IDEA
-插件
-lombok
-
-
-IDEA中下载后
-
-
-在pom.xml文件中引入依赖
-  12345&lt;dependency&gt;            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;            &lt;artifactId&gt;lombok&lt;/artifactId&......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Haven Tong on
-            2019-10-26
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -718,6 +711,10 @@ IDEA中下载后
     <ul>
       
         <li>
+          <a href="/2019/12/10/Spring-Boot对静态方法进行打桩/">Spring Boot对静态方法进行打桩</a>
+        </li>
+      
+        <li>
           <a href="/2019/12/06/redis基本配置及开关/">redis基本配置及开关</a>
         </li>
       
@@ -731,10 +728,6 @@ IDEA中下载后
       
         <li>
           <a href="/2019/11/18/Spring-Boot-CORS/">Spring Boot-CORS</a>
-        </li>
-      
-        <li>
-          <a href="/2019/11/18/C++-priority-queue/">C++-priority_queue</a>
         </li>
       
     </ul>

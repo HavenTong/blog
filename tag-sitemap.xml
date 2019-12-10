@@ -37,13 +37,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Spring-Boot/</loc>
-        <lastmod>2019-11-18T07:56:02.947Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/Java/</loc>
         <lastmod>2019-11-19T11:49:59.393Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -59,7 +52,14 @@
 
     <url>
         <loc>http://yoursite.com/tags/redis/</loc>
-        <lastmod>2019-12-06T04:03:00.594Z</lastmod>
+        <lastmod>2019-12-06T05:10:19.437Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Spring-Boot/</loc>
+        <lastmod>2019-12-10T10:16:13.619Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
