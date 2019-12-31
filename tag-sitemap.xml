@@ -59,7 +59,14 @@
 
     <url>
         <loc>http://yoursite.com/tags/Spring-Boot/</loc>
-        <lastmod>2019-12-23T13:39:08.534Z</lastmod>
+        <lastmod>2019-12-23T16:07:00.603Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Life/</loc>
+        <lastmod>2019-12-31T15:59:03.596Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
