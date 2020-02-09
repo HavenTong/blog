@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Vue实例的生命周期 - HavenTong&#39;s blog
+          Machine Learning-Concepts - HavenTong&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2019/07/20/Vue实例的生命周期/">
+    <link rel="canonical" href="http://yoursite.com/2020/02/09/Machine-Learning-Concepts/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('header.jpg')
+            background-image: url('header.png')
             /*post*/
         
     }
@@ -90,14 +90,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
+                              <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
                             
                         </div>
-                        <h1>Vue实例的生命周期</h1>
-                        <h2 class="subheading">Vue学习笔记</h2>
+                        <h1>Machine Learning-Concepts</h1>
+                        <h2 class="subheading">Concepts</h2>
                         <span class="meta">
                             Posted by Haven Tong on
-                            2019-07-20
+                            2020-02-09
                         </span>
                     </div>
                 
@@ -214,65 +214,149 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <div align="center">
-  <img src="https://cn.vuejs.org/images/lifecycle.png" width="80%">
-</div>
-<h2><span id="什么是生命周期">什么是生命周期</span></h2>
-<p>从Vue实例创建、运行、到销毁期间，总是伴随着各种各样的事件，这些事件统称为生命周期。</p>
-<h2><span id="生命周期钩子">生命周期钩子</span></h2>
+                <h1><span id="machine-learning-concepts">Machine Learning-Concepts</span></h1>
+<h2><span id="1-数据">1. 数据</span></h2>
+<blockquote>
+<p>大写字母表示举证，大写字母表示向量</p>
+</blockquote>
 <ul>
-<li>生命周期事件的别名</li>
-<li>生命周期钩子 = 生命周期函数 = 生命周期事件</li>
+<li>数据整体叫数据集(data set)</li>
+<li>每一行数据称为一个样本(sample)</li>
+<li>每一个字段表达样本的一个特征(feature)</li>
+<li>第i个样本写作 $ X^{(i)} $，第i个样本第j个特征值写作 $X^{(i)}_j$</li>
+<li>学习的任务：标记(label), 表示为 $y$, 第 $i$ 个样本的标记写作 $y^{(i)}$</li>
+<li>第 $i$ 行，也就是第 $i$ 个样本，也被称作特征向量 $X^{(i) }$</li>
 </ul>
-<h2><span id="主要的生命周期函数分类">主要的生命周期函数分类</span></h2>
+<p>$$<br>
+X^{(i)} = \left(\begin{matrix}	5.1 \	3.5 \	1.4 \	0.2\end{matrix}\right)<br>
+$$</p>
 <ul>
-<li>
-<p>创建期间的生命周期函数</p>
+<li>数学中通常把向量表示成列向量，所以通常特征可以表示成如下的形式:</li>
+</ul>
+<p>$$<br>
+\left(\begin{matrix}(X^{(1)})^T  \(X^{(2)})^T  \(X^{(3)})^T  \\end{matrix}\right)<br>
+$$</p>
 <ul>
-<li>
-<p><code>beforeCreate</code></p>
-<p>实例刚在内存中被创建出来，此时还没有初始化好<code>data</code>和<code>methods</code>属性。只有默认的生命周期函数和默认的事件</p>
-</li>
-<li>
-<p><code>created</code></p>
-<p>实例在内存中已创建ok，<code>data</code>和<code>method</code>已创建ok。此时还没有开始编译模版</p>
-</li>
-<li>
-<p><code>beforeMount</code></p>
-<p>此时已经完成了模版的编译，但是还没有挂载到页面中</p>
-</li>
-<li>
-<p><code>mounted</code></p>
-<p>此时已经将编译好的模版挂载到了页面指定的容器中使用</p>
-</li>
+<li>所有特征所存在的空间，称为特征空间(feature space)
+<ul>
+<li>分类任务的本质就是特征空间的划分</li>
+<li>在高维空间同理</li>
 </ul>
 </li>
-<li>
-<p>运行期间的生命周期函数</p>
+<li>特征可以很抽象
 <ul>
-<li>
-<p><code>beforeUpdate</code></p>
-<p>状态更新之前执行此函数，此时<code>data</code>的状态是最新的，但是页面上显示的数据还是旧的，此时还没有重新渲染DOM节点</p>
-</li>
-<li>
-<p><code>updated</code></p>
-<p>实例更新完毕后调用此函数，此时<code>data</code>的状态值和界面上显示的数据都已经完成了更新，界面已经被重新渲染完毕</p>
-</li>
+<li>图像中，每一个像素点都是特征，e.g. 28 * 28的图像就有28 * 28 = 784个特征</li>
+<li>如果彩色图像特征更多</li>
 </ul>
 </li>
-<li>
-<p>销毁期间的生命周期函数</p>
+</ul>
+<h2><span id="2-基本任务">2. 基本任务</span></h2>
+<blockquote>
+<p>监督学习主要处理分类和回归问题</p>
+</blockquote>
+<h3><span id="分类">分类</span></h3>
 <ul>
-<li>
-<p><code>beforeDestroy</code></p>
-<p>实例销毁之前调用，在这一步，实例依然完全可用</p>
-</li>
-<li>
-<p><code>destroyed</code></p>
-<p>Vue实例销毁后调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁</p>
-</li>
+<li>二分类
+<ul>
+<li>判断邮件是否是垃圾邮件</li>
+<li>判断发放给客户信用卡是否有风险</li>
+<li>判断肿瘤是恶性还是良性</li>
+<li>判断股票涨跌</li>
 </ul>
 </li>
+<li>多分类
+<ul>
+<li>数字识别</li>
+<li>图像识别</li>
+<li>判断发放给客户的信用卡的风险评级</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>很多复杂的问题可以转换成多分类问题</p>
+</blockquote>
+<ul>
+<li>一些算法只支持二分类的任务，但多分类的任务可以转换成二分类的任务</li>
+<li>一些算法天然可以完成多分类任务</li>
+<li>多标签分类 e.g. 对图片中的元素进行划分</li>
+</ul>
+<h3><span id="回归">回归</span></h3>
+<ul>
+<li>结果是一个连续数字的值，而非一个类别
+<ul>
+<li>房屋价格</li>
+<li>市场分析</li>
+<li>学生成绩</li>
+<li>股票价格</li>
+</ul>
+</li>
+<li>有一些算法只能解决回归问题，有一些算法只能解决分类问题，有一些算法都可以解决</li>
+<li>一些情况下，回归任务可以简化为分类任务</li>
+</ul>
+<h3><span id="流程">流程</span></h3>
+<p><img src="https://tva1.sinaimg.cn/large/0082zybply1gbq9r8us41j31080bswfi.jpg" alt="image-20200209171829338"></p>
+<ul>
+<li>模型 $f(x)$</li>
+</ul>
+<h2><span id="3-机器学习分类">3. 机器学习分类</span></h2>
+<h3><span id="监督学习">监督学习</span></h3>
+<p>给机器的训练数据拥有&quot;标记&quot;or&quot;答案&quot;</p>
+<ul>
+<li>图片已经拥有了标定信息</li>
+<li>银行已经积累了一定的客户信息和他们信用卡的信用情况</li>
+<li>医院已经积累了一定的病人信息和他们最终确诊是否患病的情况</li>
+<li>市场积累了房屋的基本信息和最终成交的金额</li>
+</ul>
+<h3><span id="非监督学习">非监督学习</span></h3>
+<p>给机器的训练数据没有任何&quot;标记&quot;或者“答案”</p>
+<p>对没有&quot;标记&quot;的数据进行分类-聚类分析</p>
+<h4><span id="意义">意义</span></h4>
+<p>对数据进行降维处理</p>
+<ul>
+<li>特征提取：信用卡的信用评级和人的胖瘦无关？</li>
+<li>特征压缩(特征之间关系很强)：PCA</li>
+</ul>
+<p>降维处理可以方便可视化</p>
+<p>异常检测</p>
+<h3><span id="半监督学习">半监督学习</span></h3>
+<ul>
+<li>
+<p>一部分数据标有&quot;标记&quot;或者&quot;答案&quot;，另一部分数据没有</p>
+</li>
+<li>
+<p>更常见：各种原因产生的标记缺失</p>
+</li>
+<li>
+<p>通常都先使用无监督学习手段对数据做处理，之后使用监督学习手段做模型的训练和预测</p>
+</li>
+</ul>
+<h3><span id="增强学习">增强学习</span></h3>
+<p>根据周围环境的情况，采取行动，根据采取行动的结果，学习行动方式</p>
+<p>行动-反馈</p>
+<p>奖赏或惩罚机制</p>
+<h2><span id="4-机器学习的其他分类">4. 机器学习的其他分类</span></h2>
+<h3><span id="批量学习batch-learning">批量学习(Batch Learning)</span></h3>
+<ul>
+<li>优点：简单</li>
+<li>问题：如何适应环境变化？</li>
+<li>解决方案：定时重新批量学习</li>
+<li>缺点：每次重新批量学习，运算量巨大；同时，在某些环境变化非常快的情况下，甚至不可能</li>
+</ul>
+<h3><span id="在线学习online-learning">在线学习(Online Learning)</span></h3>
+<p>输入样例和正确结果迭代进入机器学习算法</p>
+<ul>
+<li>优点：及时反映新的环境变化</li>
+<li>问题：新的数据带来不好的变化？</li>
+<li>解决方案：需要加强对数据进行监控</li>
+<li>其他：也适用于数据量巨大，无法完全批量学习的环境</li>
+</ul>
+<h3><span id="参数学习parametric-learning">参数学习(Parametric Learning)</span></h3>
+<p>e.g. 假设模型定为 $f(x) = ax + b$，那么机器学习的任务就是找到合适的 $a$ 和 $b$</p>
+<p>特点：一旦学到了参数，就不再需要原有的数据集</p>
+<h3><span id="非参数学习nonparametric-learning">非参数学习(Nonparametric Learning)</span></h3>
+<ul>
+<li>不对模型进行过多假设</li>
+<li>非参数不代表没有参数</li>
 </ul>
 
                 
@@ -281,13 +365,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2019/09/13/SpringBoot-HelloWorld/" data-toggle="tooltip" data-placement="top" title="SpringBoot HelloWorld">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2019/07/18/STL-Notes/" data-toggle="tooltip" data-placement="top" title="STL Notes">Next Post &rarr;</a>
+                            <a href="/2019/12/31/HappyNewYear/" data-toggle="tooltip" data-placement="top" title="HappyNewYear">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -317,7 +397,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">什么是生命周期</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">生命周期钩子</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">主要的生命周期函数分类</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Machine Learning-Concepts</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1. 数据</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2. 基本任务</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">分类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">回归</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">流程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">3. 机器学习分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">监督学习</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">非监督学习</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">意义</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">半监督学习</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">增强学习</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">4. 机器学习的其他分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">批量学习(Batch Learning)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">在线学习(Online Learning)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">参数学习(Parametric Learning)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">非参数学习(Nonparametric Learning)</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -337,7 +417,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
+                          <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
                         
                     </div>
                 </section>
@@ -368,8 +448,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite.com/2019/07/20/Vue实例的生命周期/";
-    var disqus_url = "http://yoursite.com/2019/07/20/Vue实例的生命周期/";
+    var disqus_identifier = "http://yoursite.com/2020/02/09/Machine-Learning-Concepts/";
+    var disqus_url = "http://yoursite.com/2020/02/09/Machine-Learning-Concepts/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

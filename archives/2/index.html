@@ -3,7 +3,7 @@
 
 <!-- Head tag -->
 <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,13 +58,13 @@
     <![endif]-->
 
     <!-- ga & ba script hoook -->
-    <script></script>
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
-	<!-- Modified by Yu-Hsuan Yen -->
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
@@ -210,6 +210,51 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2019/10/31/Spring-Boot-JDBC/">
+        <h2 class="post-title">
+            Spring Boot-JDBC
+        </h2>
+        <h3 class="post-subtitle">
+            Spring Boot & JDBC
+        </h3>
+        <div class="post-content-preview">
+            Spring Boot &amp; JDBC
+1. Spring Boot整合JDBC操作数据库
+JDBC操作数据库流程
+
+加载数据库驱动
+建立数据库连接
+创建数据库操作对象
+定义操作的SQL语句
+执行数据库操作
+获取并操作结果集
+关闭对象，回收资源
+
+不建议使用JDBC
+将Spring JDBC整合到Spring Boot
+
+pom.xml引入依赖
+
+12345678910111213&l......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Haven Tong on
+            2019-10-31
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -629,6 +674,8 @@ I publish the whole project f......
         
             
         
+            
+        
     </div>
 </section>
 
@@ -681,6 +728,10 @@ I publish the whole project f......
     <ul>
       
         <li>
+          <a href="/2020/02/09/Machine-Learning-Concepts/">Machine Learning-Concepts</a>
+        </li>
+      
+        <li>
           <a href="/2019/12/31/HappyNewYear/">HappyNewYear</a>
         </li>
       
@@ -694,10 +745,6 @@ I publish the whole project f......
       
         <li>
           <a href="/2019/12/06/redis基本配置及开关/">redis基本配置及开关</a>
-        </li>
-      
-        <li>
-          <a href="/2019/12/06/redis-conf/">redis.conf</a>
         </li>
       
     </ul>
@@ -871,7 +918,24 @@ I publish the whole project f......
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
 <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 </body>
 
