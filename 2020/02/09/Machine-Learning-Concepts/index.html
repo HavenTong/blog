@@ -223,18 +223,31 @@
 <li>数据整体叫数据集(data set)</li>
 <li>每一行数据称为一个样本(sample)</li>
 <li>每一个字段表达样本的一个特征(feature)</li>
-<li>第i个样本写作 $ X^{(i)} $，第i个样本第j个特征值写作 $X^{(i)}_j$</li>
+<li>第i个样本写作 $ X^{(i)}$ ，第i个样本第j个特征值写作 $X^{(i)}_j$</li>
 <li>学习的任务：标记(label), 表示为 $y$, 第 $i$ 个样本的标记写作 $y^{(i)}$</li>
 <li>第 $i$ 行，也就是第 $i$ 个样本，也被称作特征向量 $X^{(i) }$</li>
 </ul>
 <p>$$<br>
-X^{(i)} = \left(\begin{matrix}	5.1 \	3.5 \	1.4 \	0.2\end{matrix}\right)<br>
+X^{(i)} = \left(<br>
+\begin{matrix}	<br>
+5.1 \	<br>
+3.5 \	<br>
+1.4 \	<br>
+0.2<br>
+\end{matrix}<br>
+\right)<br>
 $$</p>
 <ul>
 <li>数学中通常把向量表示成列向量，所以通常特征可以表示成如下的形式:</li>
 </ul>
 <p>$$<br>
-\left(\begin{matrix}(X^{(1)})^T  \(X^{(2)})^T  \(X^{(3)})^T  \\end{matrix}\right)<br>
+\left(<br>
+\begin{matrix}<br>
+(X^{(1)})^T  \<br>
+(X^{(2)})^T  \<br>
+(X^{(3)})^T<br>
+\end{matrix}<br>
+\right)<br>
 $$</p>
 <ul>
 <li>所有特征所存在的空间，称为特征空间(feature space)
@@ -657,7 +670,7 @@ $$</p>
   });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
