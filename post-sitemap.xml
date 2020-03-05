@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2020/03/05/Java-Map/</loc>
+        <lastmod>2020-03-05T10:27:14.644Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2020/03/05/STL-map/</loc>
-        <lastmod>2020-03-05T08:54:53.240Z</lastmod>
+        <lastmod>2020-03-05T09:51:35.992Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
