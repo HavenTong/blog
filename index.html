@@ -213,6 +213,42 @@
 
 <div class="post-preview">
 
+    <a href="/2020/03/06/Topological-Sort/">
+        <h2 class="post-title">
+            Topological-Sort
+        </h2>
+        <h3 class="post-subtitle">
+            TopSort
+        </h3>
+        <div class="post-content-preview">
+            拓扑排序
+近日实现了一下拓扑排序，在这里记录一下拓扑排序的思想，并附上一个具体的题目
+这里使用bfs实现
+思想
+对一个有向无环图(DAG-Directed Acyclic Graph)G进行拓扑排序，将G中的所有顶点拍成一个线性序列，使得图中任何一对顶点u和v，若(u, v) 属于 E(G)，则u在线性序列中出现在v之前。
+也就是说，由某集合上的偏序得到这个集合的全序
+步骤
+
+计算所有节点的......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Haven Tong on
+            2020-03-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2020/03/05/Java-Map/">
         <h2 class="post-title">
             Java-Map
@@ -535,38 +571,6 @@ Serializable是java.io包中定义的、用于实现Java类的序列化操作而
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/11/18/Spring-Boot-CORS/">
-        <h2 class="post-title">
-            Spring Boot-CORS
-        </h2>
-        <h3 class="post-subtitle">
-            solutions for CORS
-        </h3>
-        <div class="post-content-preview">
-            Spring Boot-CORS
-什么是跨域？
-定义：浏览器从一个域名的网页取请求另一个域名下的东西。通俗点说，浏览器直接从A域访问B域中的资源是不被允许的，如果想要访问，就需要进行一步操作，这操作就叫“跨域”。例如，你从百度的页面，点击一个按钮，请求了新浪的一个接口，这就进行了跨域。不单单只有域名不同就是跨域，域名、端口、协议其一不同就是不同的域，请求资源需要跨域。
-为什么要跨域？
-为什么......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Haven Tong on
-            2019-11-18
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -601,6 +605,8 @@ Serializable是java.io包中定义的、用于实现Java类的序列化操作而
     <!-- no hr -->
     <h5><a href="/tags/">FEATURED TAGS</a></h5>
     <div class="tags">
+        
+            
         
             
         
@@ -676,6 +682,10 @@ Serializable是java.io包中定义的、用于实现Java类的序列化操作而
     <ul>
       
         <li>
+          <a href="/2020/03/06/Topological-Sort/">Topological-Sort</a>
+        </li>
+      
+        <li>
           <a href="/2020/03/05/Java-Map/">Java-Map</a>
         </li>
       
@@ -689,10 +699,6 @@ Serializable是java.io包中定义的、用于实现Java类的序列化操作而
       
         <li>
           <a href="/2019/12/31/HappyNewYear/">HappyNewYear</a>
-        </li>
-      
-        <li>
-          <a href="/2019/12/23/validation-api/">validation-api</a>
         </li>
       
     </ul>
