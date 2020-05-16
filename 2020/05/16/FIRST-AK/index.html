@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Spring Boot Bean自动装配 - HavenTong&#39;s blog
+          FIRST AK - HavenTong&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2019/10/29/Spring-Boot-Bean自动装配/">
+    <link rel="canonical" href="http://yoursite.com/2020/05/16/FIRST-AK/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,14 +90,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+                              <a class="tag" href="/tags/#Moment" title="Moment">Moment</a>
                             
                         </div>
-                        <h1>Spring Boot Bean自动装配</h1>
-                        <h2 class="subheading">Spring Boot Configuration</h2>
+                        <h1>FIRST AK</h1>
+                        <h2 class="subheading">Memory</h2>
                         <span class="meta">
                             Posted by Haven Tong on
-                            2019-10-29
+                            2020-05-16
                         </span>
                     </div>
                 
@@ -214,98 +214,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="spring-boot-bean自动装配">Spring Boot Bean自动装配</span></h1><h2><span id="1-全局配置文件">1. 全局配置文件</span></h2><p>修改Spring Boot自动配置的默认值，Spring Boot在底层自动加载</p>
-<ul>
-<li><p>application.yml</p>
-</li>
-<li><p>application.properties</p>
-</li>
-</ul>
-<h2><span id="2-bean自动装配原理">2. Bean自动装配原理</span></h2><p>(1) Spring Boot启动时加载主配置类，开启了自动配置功能<code>@EnableAutoConfiguration</code></p>
-<p>(2) <code>@EnableAutoConfiguration</code></p>
-<p>​    作用： 将类路径下<code>META-INF/spring.factories</code>里面配置的所有<code>EnableAutoConfiguration</code>的值(自动装配类)加入到执行计划中</p>
-<p>(3) 每一个自动装配类进行自动配置功能</p>
-<h2><span id="3-yaml规则">3. YAML规则</span></h2><p>(1) <strong>双引号</strong></p>
-<p>​    不会转义特殊字符，特殊字符或作为本身想要表达的意思</p>
-<p>​    <code>name: &quot;zhangsan \n lisi&quot;</code> 输出 <code>zhangsan 换行 lisi</code></p>
-<p>​    <strong>单引号</strong></p>
-<p>​    会转义特殊字符，特殊字符最终只是一个普通的字符串数据，如：</p>
-<p>​    <code>name: &#39;zhangsan \n lisi&#39;</code> 输出 <code>zhangsan \n lisi</code></p>
-<p>(2) 支持松散的结构</p>
-<p>​    <code>family-name</code> = <code>familyName</code> = <code>family_name</code></p>
-<p>(3) 占位符</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">$&#123;random.value&#125;</span></span><br><span class="line"><span class="string">$&#123;random.int&#125;</span></span><br><span class="line"><span class="string">$&#123;random.long&#125;</span></span><br><span class="line"><span class="string">$&#123;random.int(10)&#125;</span></span><br><span class="line"><span class="string">$&#123;random.int[1024,</span> <span class="number">65536</span><span class="string">]&#125;</span></span><br><span class="line"><span class="string">$&#123;xxxx.yyyy:</span> <span class="string">默认值&#125;</span></span><br></pre></td></tr></table></figure>
-<h2><span id="4-获取自定义配置">4. 获取自定义配置</span></h2><p>(1) <code>@Value(&quot;${}&quot;)</code></p>
-<p>​    实现了单个属性的注入</p>
-<p>(2) 对于复杂的数据结构，使用<code>@ConfigurationProperties</code>获取配置值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.haven.model.yaml;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> HavenTong</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/10/29 5:44 下午</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"family"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Family</span> </span>&#123;</span><br><span class="line"><span class="comment">//    @Value("$&#123;family.family-name&#125;")</span></span><br><span class="line">    <span class="keyword">private</span> String familyName;</span><br><span class="line">    <span class="keyword">private</span> Father father;</span><br><span class="line">    <span class="keyword">private</span> Mother mother;</span><br><span class="line">    <span class="keyword">private</span> Child child;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>(3) 两种注解区别</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">@ConfigurationProperties</th>
-<th style="text-align:center">@Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">功能</td>
-<td style="text-align:center">批量注入属性</td>
-<td style="text-align:center">一个个指定</td>
-</tr>
-<tr>
-<td style="text-align:center">松散语法绑定</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center">不支持</td>
-</tr>
-<tr>
-<td style="text-align:center">SpEL</td>
-<td style="text-align:center">不支持</td>
-<td style="text-align:center">支持</td>
-</tr>
-<tr>
-<td style="text-align:center">复杂数据类型嵌套</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center">不支持</td>
-</tr>
-<tr>
-<td style="text-align:center">JSR303数据校验</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center">不支持</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2><span id="5-配置文件注入值数据校验">5. 配置文件注入值数据校验</span></h2><p>(1) 在需要校验的属性装配类上加<code>@Validated</code>注解</p>
-<p>(2) 数据校验注解列表</p>
-<p>(3) 若验证失败，会出现<code>BindValidationException</code>异常</p>
-<h2><span id="6-profile不同环境下不同配置">6. Profile不同环境下不同配置</span></h2><p><strong>优先级：</strong> 外部大于内部，特指大于泛指</p>
-<ul>
-<li>application.yml 全局配置文件</li>
-<li>application-dev.yml 开发环境配置文件</li>
-<li>application-test.yml 测试环境配置文件</li>
-<li>Application-prod.yml 生产环境配置文件</li>
-</ul>
-<p>(1) 配置application.yml</p>
-<p>设置<code>spring.profiles.active</code>指定使用哪一个配置文件。</p>
-<p>优先级以下面的dev/test/prod yml为优先</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span></span><br><span class="line"><span class="attr">    active:</span> <span class="string">dev</span></span><br></pre></td></tr></table></figure>
-<p>(2) 通过命令行启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar SpringBoot01HelloWorld-1.0-SNAPSHOT.jar --spring.profiles.active=dev</span><br></pre></td></tr></table></figure>
-<p>(3) IDEA设置Program Arguments</p>
-<p>​    (a) Edit Configuration —&gt; Environment —&gt; Program Argument</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--spring.profiles.active=dev</span><br></pre></td></tr></table></figure>
-<p>​    (b) Edit Configuration —&gt; Environment —&gt; VM options</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dspring.profiles.active=dev</span><br></pre></td></tr></table></figure>
-<h2><span id="7-项目内部配置文件加载位置">7. 项目内部配置文件加载位置</span></h2><p>spring boot会扫描以下位置的application.properties / application.yml文件作为spring boot的默认配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-file:./config/</span><br><span class="line">-file:./</span><br><span class="line">-classpath:/config/</span><br><span class="line">-classpath:./</span><br></pre></td></tr></table></figure>
-<p>以上优先级从高到低，所有位置的文件都会被加载；高优先级会覆盖低优先级</p>
-<h2><span id="8-配置文件敏感字段加密">8. 配置文件敏感字段加密</span></h2><p>(1) 与spring boot整合</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.ulisesbocchio<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jasypt-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>(2) 需要加密的地方，使用<code>ENC()</code>进行包裹处理</p>
-<p>(3) 在配置文件中设置密钥</p>
+                <h4><span id="纪念一下人生第一次ak">纪念一下人生第一次AK:</span></h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geupo4q8c3j30y102sq37.jpg" alt="image-20200516233222811"></p>
+<p>后续题解会尽快补充</p>
 
                 
 
@@ -313,13 +223,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2019/10/31/Spring-Boot-JDBC/" data-toggle="tooltip" data-placement="top" title="Spring Boot-JDBC">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2019/10/29/SpringBoot-RESTful接口/" data-toggle="tooltip" data-placement="top" title="SpringBoot RESTful接口">Next Post &rarr;</a>
+                            <a href="/2020/03/06/Topological-Sort/" data-toggle="tooltip" data-placement="top" title="Topological-Sort">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -349,7 +255,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Spring Boot Bean自动装配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1. 全局配置文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2. Bean自动装配原理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">3. YAML规则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">4. 获取自定义配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">5. 配置文件注入值数据校验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">6. Profile不同环境下不同配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">7. 项目内部配置文件加载位置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">8. 配置文件敏感字段加密</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">纪念一下人生第一次AK:</span></a></li></ol>
         
         </div>
       </aside>
@@ -369,7 +275,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Spring Boot" title="Spring Boot">Spring Boot</a>
+                          <a class="tag" href="/tags/#Moment" title="Moment">Moment</a>
                         
                     </div>
                 </section>
@@ -400,8 +306,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite.com/2019/10/29/Spring-Boot-Bean自动装配/";
-    var disqus_url = "http://yoursite.com/2019/10/29/Spring-Boot-Bean自动装配/";
+    var disqus_identifier = "http://yoursite.com/2020/05/16/FIRST-AK/";
+    var disqus_url = "http://yoursite.com/2020/05/16/FIRST-AK/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
