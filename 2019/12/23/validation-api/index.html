@@ -144,6 +144,13 @@
 
                         
                         <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -152,13 +159,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -214,18 +214,21 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="validation-api">validation-api</span></h1><h3><span id="jsr303jsr-349hibernate-validatorspring-validation之间的关系">JSR303/JSR-349，hibernate validator，spring validation之间的关系</span></h3><blockquote>
+                <h1><span id="validation-api">validation-api</span></h1>
+<h3><span id="jsr303jsr-349hibernate-validatorspring-validation之间的关系">JSR303/JSR-349，hibernate validator，spring validation之间的关系</span></h3>
+<blockquote>
 <p>JSR303是一项标准,JSR-349是其的升级版本，添加了一些新特性，他们规定一些校验规范即校验注解，如@Null，@NotNull，@Pattern，他们位于javax.validation.constraints包下，只提供规范不提供实现。而hibernate-validator是对这个规范的实践（不要将hibernate和数据库orm框架联系在一起），他提供了相应的实现，并增加了一些其他校验注解，如@Email，@Length，@Range等等，他们位于org.hibernate.validator.constraints包下。而万能的spring为了给开发者提供便捷，对hibernate validator进行了二次封装，</p>
 </blockquote>
 <p>使用<code>validation-api</code>，通过注解形式进行数据校验</p>
-<h3><span id="依赖包含关系">依赖包含关系</span></h3><p>校验注解包含在<code>spring-boot-starter-web</code>里面</p>
+<h3><span id="依赖包含关系">依赖包含关系</span></h3>
+<p>校验注解包含在<code>spring-boot-starter-web</code>里面</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>查看<code>spring-boot-starter-web</code>的子依赖：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-validation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-embed-el<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.embed<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>子依赖中包含了<code>spring-boot-starter-validation</code>，再查看该依赖的子依赖：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jakarta.validation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jakarta.validation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate.validator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.0.18.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>validation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.validation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以发现，该子依赖中包含了<code>validation-api</code>，同时包含了它的实现<code>hibernate-validator</code></p>
-<h3><span id="validation-api基本注解">validation-api基本注解</span></h3><div class="table-container">
+<h3><span id="validation-api基本注解">validation-api基本注解</span></h3>
 <table>
 <thead>
 <tr>
@@ -308,16 +311,19 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3><span id="注意">注意</span></h3><h4><span id="1-对dtorequestbody进行数据校验">1. 对dto(<code>@RequestBody</code>)进行数据校验</span></h4><p>直接在dto的类中的属性上加上校验注解。但是仅仅这样的话，该注解不会生效</p>
+<h3><span id="注意">注意</span></h3>
+<h4><span id="1-对dtorequestbody进行数据校验">1. 对dto(<code>@RequestBody</code>)进行数据校验</span></h4>
+<p>直接在dto的类中的属性上加上校验注解。但是仅仅这样的话，该注解不会生效</p>
 <p>需要在controller中需要校验的参数前加上<code>@Validated</code>注解：</p>
 <p>e.g.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/register"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ResultEntity <span class="title">register</span><span class="params">(@Validated </span></span></span><br><span class="line"><span class="function"><span class="params">   		 @RequestBody CustomerRequest customerRequest)</span></span>&#123;</span><br><span class="line">    customerService.register(customerRequest);</span><br><span class="line">    <span class="keyword">return</span> ResultEntity.succeed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="2-对get请求的参数requestparam进行数据校验">2. 对GET请求的参数(<code>@RequestParam</code>)进行数据校验</span></h4><p>对<code>@RequestParam</code>注解的参数通常没有专门的类，需要直接在controller方法的参数处加上校验注解：</p>
+<h4><span id="2-对get请求的参数requestparam进行数据校验">2. 对GET请求的参数(<code>@RequestParam</code>)进行数据校验</span></h4>
+<p>对<code>@RequestParam</code>注解的参数通常没有专门的类，需要直接在controller方法的参数处加上校验注解：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/check-code"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ResultEntity <span class="title">sendCheckCode</span><span class="params">(@RequestParam</span></span></span><br><span class="line"><span class="function"><span class="params">                                    @Email(message = <span class="string">"必须为合法邮箱地址"</span>)</span> String email) </span>&#123;</span><br><span class="line">      customerService.sendCheckCode(email);</span><br><span class="line">      <span class="keyword">return</span> ResultEntity.succeed();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>仅仅这样，注解也不会生效。切记需要在controller类上加入<code>@Validated</code>注解才可以生效：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Validated</span>  <span class="comment">// 对@RequestParam的校验需要在controller上加@Validated注解</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/customer"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerController</span> </span>&#123;</span><br></pre></td></tr></table></figure>
-<h3><span id="官方文档">官方文档</span></h3><p><a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints" target="_blank" rel="noopener">https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints</a></p>
+<h3><span id="官方文档">官方文档</span></h3>
+<p><a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints" target="_blank" rel="noopener">https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints</a></p>
 
                 
 
@@ -621,7 +627,7 @@
   });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->

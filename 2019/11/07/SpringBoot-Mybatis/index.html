@@ -144,6 +144,13 @@
 
                         
                         <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -152,13 +159,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -214,7 +214,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="spring-boot-mybatis">Spring Boot-Mybatis</span></h1><h2><span id="1-orm框架选型">1. ORM框架选型</span></h2><div class="table-container">
+                <h1><span id="spring-boot-mybatis">Spring Boot-Mybatis</span></h1>
+<h2><span id="1-orm框架选型">1. ORM框架选型</span></h2>
 <table>
 <thead>
 <tr>
@@ -246,14 +247,14 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>JPA是规范，Hibernate是实现</p>
 <ul>
 <li>Spring Data JPA 对开发人员更加友好，单表操作非常方便，多表关联也不麻烦</li>
 <li>mybatis各方面都很优秀，使用范围更广</li>
 <li>大型项目建议mybatis</li>
 </ul>
-<h2><span id="2-整合mybatis操作数据库">2. 整合MyBatis操作数据库</span></h2><ul>
+<h2><span id="2-整合mybatis操作数据库">2. 整合MyBatis操作数据库</span></h2>
+<ul>
 <li>pom.xml</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -270,16 +271,18 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hehe.mapper;</span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式1：使用注解编写SQL。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from t_user"</span>)</span><br><span class="line">    <span class="function">List&lt;User&gt; <span class="title">list</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式2：使用注解指定某个工具类的方法来动态编写SQL.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SelectProvider</span>(type = UserSqlProvider.class, method = <span class="string">"listByUsername"</span>)</span><br><span class="line">    <span class="function">List&lt;User&gt; <span class="title">listByUsername</span><span class="params">(String username)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 延伸：上述两种方式都可以附加<span class="doctag">@Results</span>注解来指定结果集的映射关系.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * PS：如果符合下划线转驼峰的匹配项可以直接省略不写。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Results</span>(&#123;</span><br><span class="line">            <span class="meta">@Result</span>(property = <span class="string">"userId"</span>, column = <span class="string">"USER_ID"</span>),</span><br><span class="line">            <span class="meta">@Result</span>(property = <span class="string">"username"</span>, column = <span class="string">"USERNAME"</span>),</span><br><span class="line">            <span class="meta">@Result</span>(property = <span class="string">"password"</span>, column = <span class="string">"PASSWORD"</span>),</span><br><span class="line">            <span class="meta">@Result</span>(property = <span class="string">"mobileNum"</span>, column = <span class="string">"PHONE_NUM"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from t_user"</span>)</span><br><span class="line">    <span class="function">List&lt;User&gt; <span class="title">listSample</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 延伸：无论什么方式,如果涉及多个参数,则必须加上<span class="doctag">@Param</span>注解,否则无法使用EL表达式获取参数。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from t_user where username like #&#123;username&#125; and password like #&#123;password&#125;"</span>)</span><br><span class="line">    <span class="function">User <span class="title">get</span><span class="params">(@Param(<span class="string">"username"</span>)</span> String username, @<span class="title">Param</span><span class="params">(<span class="string">"password"</span>)</span> String password)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SelectProvider</span>(type = UserSqlProvider.class, method = <span class="string">"getBadUser"</span>)</span><br><span class="line">    <span class="function">User <span class="title">getBadUser</span><span class="params">(@Param(<span class="string">"username"</span>)</span> String username, @<span class="title">Param</span><span class="params">(<span class="string">"password"</span>)</span> String password)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>可以传入参数</p>
+<li>
+<p>可以传入参数</p>
 <ul>
 <li>JavaBean</li>
 <li>Map</li>
 <li>多个参数，需要用<code>@Param</code>注解</li>
 </ul>
 </li>
-<li><p><code>@Results</code>注解</p>
+<li>
+<p><code>@Results</code>注解</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select</span>(<span class="string">"select t_id, t_age, t_name  "</span></span><br><span class="line">            + <span class="string">"from sys_user             "</span></span><br><span class="line">            + <span class="string">"where t_id = #&#123;id&#125;        "</span>)</span><br><span class="line">    <span class="meta">@Results</span>(id=<span class="string">"userResults"</span>, value=&#123;</span><br><span class="line">            <span class="meta">@Result</span>(property=<span class="string">"id"</span>,   column=<span class="string">"t_id"</span>),</span><br><span class="line">            <span class="meta">@Result</span>(property=<span class="string">"age"</span>,  column=<span class="string">"t_age"</span>),</span><br><span class="line">            <span class="meta">@Result</span>(property=<span class="string">"name"</span>, column=<span class="string">"t_name"</span>),</span><br><span class="line">    &#125;)</span><br><span class="line">　　 <span class="function">User <span class="title">selectUserById</span><span class="params">(@Param(<span class="string">"id"</span>)</span> String id)</span>;</span><br></pre></td></tr></table></figure>
-<p>  <code>@Results</code>可以给出一个id，其他方法根据该id可以通过<code>@ResultMap</code>重复使用：</p>
+<p><code>@Results</code>可以给出一个id，其他方法根据该id可以通过<code>@ResultMap</code>重复使用：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select</span>(<span class="string">"select t_id, t_age, t_name  "</span></span><br><span class="line">           + <span class="string">"from sys_user             "</span></span><br><span class="line">           + <span class="string">"where t_name = #&#123;name&#125;        "</span>)</span><br><span class="line">   <span class="meta">@ResultMap</span>(<span class="string">"userResults"</span>)</span><br><span class="line">    　　 <span class="function">User <span class="title">selectUserByName</span><span class="params">(@Param(<span class="string">"name"</span>)</span> String name)</span>;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
@@ -585,7 +588,7 @@
   });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
