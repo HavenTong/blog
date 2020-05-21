@@ -214,42 +214,63 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="redisconf">redis.conf</span></h1><h5><span id="绑定的主机地址">绑定的主机地址</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 127.0.0.1</span><br></pre></td></tr></table></figure>
+                <h1><span id="redisconf">redis.conf</span></h1>
+<h5><span id="绑定的主机地址">绑定的主机地址</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 127.0.0.1</span><br></pre></td></tr></table></figure>
 <p>如果需要远程访问，则需要注释掉</p>
-<h5><span id="守护进程">守护进程</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daemonize no</span><br></pre></td></tr></table></figure>
+<h5><span id="守护进程">守护进程</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daemonize no</span><br></pre></td></tr></table></figure>
 <p>Redis默认以非守护进程运行，如果想要改为守护进程，则设置为<code>yes</code></p>
-<h5><span id="pidfile">pidfile</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pidfile /var/run/redis_6379.pid</span><br></pre></td></tr></table></figure>
+<h5><span id="pidfile">pidfile</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pidfile /var/run/redis_6379.pid</span><br></pre></td></tr></table></figure>
 <p>设置当Redis以守护进程运行时，它的pid写入的文件</p>
-<h5><span id="端口">端口</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port 6379</span><br></pre></td></tr></table></figure>
+<h5><span id="端口">端口</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port 6379</span><br></pre></td></tr></table></figure>
 <p>指定Redis的端口</p>
-<h5><span id="日志记录级别">日志记录级别</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loglevel verbose</span><br></pre></td></tr></table></figure>
+<h5><span id="日志记录级别">日志记录级别</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loglevel verbose</span><br></pre></td></tr></table></figure>
 <p>Redis总共支持四个级别：debug, verbose, notice, warning, 默认为verbose</p>
-<h5><span id="设置数据库个数">设置数据库个数</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">databases 16</span><br></pre></td></tr></table></figure>
-<h5><span id="指定在多长时间内有多少次更新操作就将数据同步到数据文件可以多个条件配合">指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save &lt;seconds&gt; &lt;changes&gt;</span><br></pre></td></tr></table></figure>
+<h5><span id="设置数据库个数">设置数据库个数</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">databases 16</span><br></pre></td></tr></table></figure>
+<h5><span id="指定在多长时间内有多少次更新操作就将数据同步到数据文件可以多个条件配合">指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save &lt;seconds&gt; &lt;changes&gt;</span><br></pre></td></tr></table></figure>
 <p>默认配置文件提供三种操作</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br></pre></td></tr></table></figure>
 <p>满足一个就持久化</p>
-<h5><span id="指定本地数据库文件名默认为dumprdb">指定本地数据库文件名，默认为dump.rdb</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dbfilename dump.rdb</span><br></pre></td></tr></table></figure>
-<h5><span id="指定本地数据库存放目录">指定本地数据库存放目录</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir ./</span><br></pre></td></tr></table></figure>
+<h5><span id="指定本地数据库文件名默认为dumprdb">指定本地数据库文件名，默认为dump.rdb</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dbfilename dump.rdb</span><br></pre></td></tr></table></figure>
+<h5><span id="指定本地数据库存放目录">指定本地数据库存放目录</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir ./</span><br></pre></td></tr></table></figure>
 <p>默认当前目录</p>
-<h5><span id="主从服务">主从服务</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof &lt;masterip&gt; &lt;masterport&gt;</span><br></pre></td></tr></table></figure>
+<h5><span id="主从服务">主从服务</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof &lt;masterip&gt; &lt;masterport&gt;</span><br></pre></td></tr></table></figure>
 <p>设置当本机为slave服务时，设置master服务的IP地址及端口，在Redis启动时，它会自动从master进行数据同步</p>
-<h5><span id="master服务密码保护">master服务密码保护</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">masterauth &lt;master-password&gt;</span><br></pre></td></tr></table></figure>
+<h5><span id="master服务密码保护">master服务密码保护</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">masterauth &lt;master-password&gt;</span><br></pre></td></tr></table></figure>
 <p>当master服务设置了密码保护时，slave服务连接master服务的密码</p>
-<h5><span id="设置redis连接密码">设置redis连接密码</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass foobared</span><br></pre></td></tr></table></figure>
+<h5><span id="设置redis连接密码">设置redis连接密码</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass foobared</span><br></pre></td></tr></table></figure>
 <p>如果配置了连接密码，客户端在连接Redis时需要通过 <code>AUTH &lt;password&gt;</code>命令提供密码，默认关闭</p>
 <p><strong><code>Java</code>连接redis必须设置密码</strong></p>
-<h5><span id="设置最大客户端连接数默认无限制">设置最大客户端连接数，默认无限制</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxclients 10000</span><br></pre></td></tr></table></figure>
-<h5><span id="指定redis最大内存限制">指定redis最大内存限制</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory &lt;bytes&gt;</span><br></pre></td></tr></table></figure>
+<h5><span id="设置最大客户端连接数默认无限制">设置最大客户端连接数，默认无限制</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxclients 10000</span><br></pre></td></tr></table></figure>
+<h5><span id="指定redis最大内存限制">指定redis最大内存限制</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory &lt;bytes&gt;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>建议根据服务器实际情况设置</p>
+<li>
+<p>建议根据服务器实际情况设置</p>
 </li>
-<li><p>建议不要超过1G</p>
+<li>
+<p>建议不要超过1G</p>
 </li>
 </ul>
-<h5><span id="对于redis中的内存管理有两种方案">对于redis中的内存管理有两种方案：</span></h5><ul>
-<li>为数据设置超时事件</li>
-<li><p>采用LRU算法将不用的数据删除</p>
+<h5><span id="对于redis中的内存管理有两种方案">对于redis中的内存管理有两种方案：</span></h5>
+<ul>
+<li>
+<p>为数据设置超时事件</p>
+</li>
+<li>
+<p>采用LRU算法将不用的数据删除</p>
 <ul>
 <li><code>volatile-lru</code>: 设定超时时间的数据中，删除最不常使用的元素</li>
 <li><code>allkeys-lru</code>: 查询所有key中最近最不常使用的数据进行删除，<strong>应用最广泛</strong></li>
@@ -260,19 +281,25 @@
 </ul>
 </li>
 </ul>
-<h4><span id="配置redis服务端">配置redis服务端</span></h4><ul>
-<li><p>允许远程访问</p>
-<p>  注释掉 <code>bind 127.0.0.1</code></p>
+<h4><span id="配置redis服务端">配置redis服务端</span></h4>
+<ul>
+<li>
+<p>允许远程访问</p>
+<p>注释掉 <code>bind 127.0.0.1</code></p>
 </li>
-<li><p>以守护进程运行</p>
-<p>  将<code>daemonize no</code> 改为 <code>daemonize yes</code></p>
+<li>
+<p>以守护进程运行</p>
+<p>将<code>daemonize no</code> 改为 <code>daemonize yes</code></p>
 </li>
-<li><p><code>Java</code> 连接redis必须设置密码：</p>
-<p>  <code>requirepass &lt;password&gt;</code></p>
+<li>
+<p><code>Java</code> 连接redis必须设置密码：</p>
+<p><code>requirepass &lt;password&gt;</code></p>
 </li>
 </ul>
-<h5><span id="查看redis是否在运行">查看redis是否在运行</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -i redis</span><br></pre></td></tr></table></figure>
-<h5><span id="远程连接redis">远程连接redis</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h &lt;ip&gt; -p &lt;port&gt; -a &lt;password&gt;</span><br></pre></td></tr></table></figure>
+<h5><span id="查看redis是否在运行">查看redis是否在运行</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -i redis</span><br></pre></td></tr></table></figure>
+<h5><span id="远程连接redis">远程连接redis</span></h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h &lt;ip&gt; -p &lt;port&gt; -a &lt;password&gt;</span><br></pre></td></tr></table></figure>
 
                 
 
