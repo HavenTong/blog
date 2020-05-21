@@ -144,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -214,137 +214,185 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="mongodb基础">MongoDB基础</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@4.2</span><br><span class="line"></span><br><span class="line">brew services stop mongodb-community@4.2</span><br></pre></td></tr></table></figure>
-<h3><span id="1-基本概念">1. 基本概念</span></h3><h4><span id="集合">集合</span></h4><p>集合类似于数组，在集合中可以存放文档</p>
-<h4><span id="文档">文档</span></h4><p>文档是文档数据库的最小单元，我们操作和存储的内容都是文档</p>
+                <h1><span id="mongodb基础">MongoDB基础</span></h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@4.2</span><br><span class="line"></span><br><span class="line">brew services stop mongodb-community@4.2</span><br></pre></td></tr></table></figure>
+<h3><span id="1-基本概念">1. 基本概念</span></h3>
+<h4><span id="集合">集合</span></h4>
+<p>集合类似于数组，在集合中可以存放文档</p>
+<h4><span id="文档">文档</span></h4>
+<p>文档是文档数据库的最小单元，我们操作和存储的内容都是文档</p>
 <p>在MongoDB中数据库和集合都不需要手动创建</p>
 <p>当创建文档时，如果文档所在的集合或数据库不存在，会自动创建集合和数据库</p>
-<h3><span id="2-基本指令">2. 基本指令</span></h3><ul>
-<li><p><code>show dbs</code></p>
-<p>  显示当前所有数据库</p>
+<h3><span id="2-基本指令">2. 基本指令</span></h3>
+<ul>
+<li>
+<p><code>show dbs</code></p>
+<p>显示当前所有数据库</p>
 </li>
-<li><p><code>use [db names]</code></p>
-<p>  进入到指定的数据库中</p>
+<li>
+<p><code>use [db names]</code></p>
+<p>进入到指定的数据库中</p>
 </li>
-<li><p><code>db</code></p>
-<p>  表示当前所处的数据库</p>
+<li>
+<p><code>db</code></p>
+<p>表示当前所处的数据库</p>
 </li>
-<li><p><code>show collections</code></p>
-<p>  查看数据库中所存在的集合</p>
+<li>
+<p><code>show collections</code></p>
+<p>查看数据库中所存在的集合</p>
 </li>
 </ul>
-<h3><span id="3-crud">3. CRUD</span></h3><h4><span id="1-插入文档">(1) 插入文档</span></h4><ul>
-<li><p><code>db.&lt;collection&gt;.insert()</code></p>
+<h3><span id="3-crud">3. CRUD</span></h3>
+<h4><span id="1-插入文档">(1) 插入文档</span></h4>
 <ul>
-<li><p>向集合中插入1个或多个文档</p>
+<li>
+<p><code>db.&lt;collection&gt;.insert()</code></p>
+<ul>
+<li>
+<p>向集合中插入1个或多个文档</p>
 </li>
-<li><p>向test数据库中的 stus 集合中插入一个新的学生对象</p>
-<p>  <code>{name: &quot;孙悟空&quot;, age: 18, gender: &quot;male&quot;}</code></p>
+<li>
+<p>向test数据库中的 stus 集合中插入一个新的学生对象</p>
+<p><code>{name: &quot;孙悟空&quot;, age: 18, gender: &quot;male&quot;}</code></p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.stus.insert(&#123;</span><br><span class="line">	name: <span class="string">"孙悟空"</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    gender: <span class="string">"male"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p>向集合中插入文档时，如果没有指定<code>_id</code>属性，则数据库会用<code>ObjectID()</code>自动为文档添加<code>_id</code>，改属性作为文档的唯一标识。</p>
+<li>
+<p>向集合中插入文档时，如果没有指定<code>_id</code>属性，则数据库会用<code>ObjectID()</code>自动为文档添加<code>_id</code>，改属性作为文档的唯一标识。</p>
 </li>
-<li><p>可以自己属性<code>_id</code>，数据库就不会再添加；如果自己指定，也必须确保唯一性</p>
+<li>
+<p>可以自己属性<code>_id</code>，数据库就不会再添加；如果自己指定，也必须确保唯一性</p>
 </li>
-<li><p><code>db.&lt;collection&gt;.insertOne()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.insertOne()</code></p>
 </li>
-<li><p><code>db.&lt;collection&gt;.insertMany()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.insertMany()</code></p>
 </li>
 </ul>
-<h4><span id="2-查询文档">(2) 查询文档</span></h4><ul>
-<li><p><code>db.&lt;collection&gt;.find()</code></p>
+<h4><span id="2-查询文档">(2) 查询文档</span></h4>
 <ul>
-<li><p>查询集合中所有符合条件的文档</p>
+<li>
+<p><code>db.&lt;collection&gt;.find()</code></p>
+<ul>
+<li>
+<p>查询集合中所有符合条件的文档</p>
 </li>
-<li><p><code>find()</code>可以接受一个对象作为条件</p>
-<p>  <code>find({})</code>也表示查询所有文档</p>
-<p>  <code>{字段名: 值}</code>： 查询字段是指定值的文档</p>
+<li>
+<p><code>find()</code>可以接受一个对象作为条件</p>
+<p><code>find({})</code>也表示查询所有文档</p>
+<p><code>{字段名: 值}</code>： 查询字段是指定值的文档</p>
 </li>
-<li><p><code>find()</code>返回是一个数组，可以用<code>[]</code>索引</p>
+<li>
+<p><code>find()</code>返回是一个数组，可以用<code>[]</code>索引</p>
 </li>
 </ul>
 </li>
-<li><p><code>db.&lt;collection&gt;.findOne()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.findOne()</code></p>
 <ul>
 <li>查询集合中符合条件的第一个文档</li>
 <li><code>findOne()</code>返回的是一个文档</li>
 </ul>
 </li>
-<li><p><code>db.&lt;collection&gt;.find().count() / db.&lt;collection&gt;.find().length</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.find().count() / db.&lt;collection&gt;.find().length</code></p>
 </li>
-<li><p>MongoDB支持通过内嵌文档的属性查询，如果要查询内嵌文档，通过<code>.</code>来匹配；如果要通过内嵌文档进行查询，此时属性名必须使用引号</p>
+<li>
+<p>MongoDB支持通过内嵌文档的属性查询，如果要查询内嵌文档，通过<code>.</code>来匹配；如果要通过内嵌文档进行查询，此时属性名必须使用引号</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(&#123;</span><br><span class="line">    <span class="string">"hobby.movies"</span>: <span class="string">"hero"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>.limit()</code>可以设置显示数据的上限</p>
+<li>
+<p><code>.limit()</code>可以设置显示数据的上限</p>
 </li>
-<li><p>分页数据显示</p>
+<li>
+<p>分页数据显示</p>
 <ul>
-<li><p><code>.skip((页码-1) * 每页显示的条数).limit(每页显示的条数)</code></p>
+<li>
+<p><code>.skip((页码-1) * 每页显示的条数).limit(每页显示的条数)</code></p>
 </li>
-<li><p><code>.skip()</code>用于跳过指定数量的数据</p>
+<li>
+<p><code>.skip()</code>用于跳过指定数量的数据</p>
 </li>
-<li><p>MongoDB会自动调整<code>skip()</code>和<code>limit()</code>的位置</p>
+<li>
+<p>MongoDB会自动调整<code>skip()</code>和<code>limit()</code>的位置</p>
 </li>
 </ul>
 </li>
 </ul>
-<h4><span id="3-修改文档">(3) 修改文档</span></h4><ul>
-<li><p><code>db.&lt;collection&gt;.update(查询条件，新对象)</code></p>
+<h4><span id="3-修改文档">(3) 修改文档</span></h4>
 <ul>
-<li><p>默认情况下用新对象替换旧对象</p>
+<li>
+<p><code>db.&lt;collection&gt;.update(查询条件，新对象)</code></p>
+<ul>
+<li>
+<p>默认情况下用新对象替换旧对象</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换</span></span><br><span class="line">db.stus.update(&#123;<span class="attr">name</span>: <span class="string">"haven"</span>&#125;, &#123;<span class="attr">age</span>: <span class="number">28</span>&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>如果需要修改指定属性，而不是替换，需要使用修改操作符</p>
+<li>
+<p>如果需要修改指定属性，而不是替换，需要使用修改操作符</p>
 </li>
-<li><p><code>$set</code></p>
-<p>  可以用来修改文档中的指定属性</p>
+<li>
+<p><code>$set</code></p>
+<p>可以用来修改文档中的指定属性</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.stus.update(</span><br><span class="line">    &#123;<span class="string">"_id"</span> : ObjectId(<span class="string">"5da96ae4298c2eb5254c4588"</span>)&#125;,</span><br><span class="line">    &#123;<span class="attr">$set</span>:&#123;</span><br><span class="line">       gender: <span class="string">"male"</span>,</span><br><span class="line">       address: <span class="string">"liu sha he"</span> </span><br><span class="line">     &#125; </span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>$unset</code></p>
-<p>  可以用来删除文档的指定属性</p>
+<li>
+<p><code>$unset</code></p>
+<p>可以用来删除文档的指定属性</p>
 </li>
-<li><p><code>update()</code><strong>默认情况只改一个</strong></p>
+<li>
+<p><code>update()</code><strong>默认情况只改一个</strong></p>
 </li>
 </ul>
 </li>
-<li><p><code>db.&lt;collection&gt;.updateMany()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.updateMany()</code></p>
 <ul>
 <li>同时修改多个符合条件的文档</li>
 </ul>
 </li>
-<li><p><code>db.&lt;collection&gt;.updateOne()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.updateOne()</code></p>
 <ul>
 <li>更新第一个符合条件的文档</li>
 </ul>
 </li>
-<li><p><code>db.&lt;collection&gt;.replaceOne()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.replaceOne()</code></p>
 <ul>
 <li>替换一个文档</li>
 </ul>
 </li>
-<li><p><code>$push</code>: 向数组中添加一个元素</p>
-<p>  <code>$addToSet</code>: 向数组中添加一个元素，且没有重复</p>
+<li>
+<p><code>$push</code>: 向数组中添加一个元素</p>
+<p><code>$addToSet</code>: 向数组中添加一个元素，且没有重复</p>
 </li>
 </ul>
-<h4><span id="4-删除文档">(4) 删除文档</span></h4><ul>
-<li><p><code>db.&lt;collection&gt;.remove()</code></p>
+<h4><span id="4-删除文档">(4) 删除文档</span></h4>
+<ul>
+<li>
+<p><code>db.&lt;collection&gt;.remove()</code></p>
 <ul>
 <li>可以根据条件来删除文档，传递的条件的方式和<code>find()</code>一样</li>
 <li><strong>默认情况下，删除符合条件的所有文档</strong></li>
-<li>如果<code>remove()</code>第二个参数为<code>true</code>，则只会删除一个 </li>
+<li>如果<code>remove()</code>第二个参数为<code>true</code>，则只会删除一个</li>
 <li>如果只传递一个空对象作为参数，则删除全部文档</li>
 </ul>
 </li>
-<li><p><code>db.&lt;collection&gt;.deleteOne()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.deleteOne()</code></p>
 </li>
-<li><p><code>db.&lt;collection&gt;.deleteMany()</code></p>
+<li>
+<p><code>db.&lt;collection&gt;.deleteMany()</code></p>
 </li>
-<li><p><code>db.&lt;collection&gt;.drop()</code></p>
-<p>  删除整个集合</p>
+<li>
+<p><code>db.&lt;collection&gt;.drop()</code></p>
+<p>删除整个集合</p>
 </li>
-<li><p><code>db.dropDatabase()</code></p>
+<li>
+<p><code>db.dropDatabase()</code></p>
 </li>
 </ul>
 
@@ -489,7 +537,7 @@
     }
 </style>
 
-<script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.0.5/es5/tex-chtml-full.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.0.5/es5/core.js"></script>
 
 
     <!-- Footer -->

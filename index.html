@@ -136,14 +136,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -222,8 +222,9 @@
         </h3>
         <div class="post-content-preview">
             纪念一下人生第一次AK:
+
 后续题解会尽快补充
-“Kry hkbwx ubogo xqpqd jlhvvd qcuucx xmwohi qvzegb qsvqskq llwzeug ipwbapd cqwfypww dyphntfz tuqppyipb dkvhhgecd wfwnphmxoa sbdfmnyeim hrsaebveez aszqnvruhr mlghuuwvec xpefyg......
+“Kry hkbwx ubogo xqpqd jlhvvd qcuucx xmwohi qvzegb qsvqskq llwzeug ipwbapd cqwfypww dyphntfz tuqppyipb dkvhhgecd wfwnphmxoa sbdfmnyeim hrsaebveez aszqnvruhr mlghuuwvec xpefy......
         </div>
     </a>
     
@@ -251,12 +252,15 @@
             TopSort
         </h3>
         <div class="post-content-preview">
-            拓扑排序近日实现了一下拓扑排序，在这里记录一下拓扑排序的思想，并附上一个具体的题目
+            拓扑排序
+近日实现了一下拓扑排序，在这里记录一下拓扑排序的思想，并附上一个具体的题目
 这里使用bfs实现
-思想对一个有向无环图(DAG-Directed Acyclic Graph)G进行拓扑排序，将G中的所有顶点拍成一个线性序列，使得图中任何一对顶点u和v，若(u, v) 属于 E(G)，则u在线性序列中出现在v之前。
+思想
+对一个有向无环图(DAG-Directed Acyclic Graph)G进行拓扑排序，将G中的所有顶点拍成一个线性序列，使得图中任何一对顶点u和v，若(u, v) 属于 E(G)，则u在线性序列中出现在v之前。
 也就是说，由某集合上的偏序得到这个集合的全序
 步骤
-计算所有节点的入度(......
+
+计算所有节点的......
         </div>
     </a>
     
@@ -284,14 +288,16 @@
             Collections
         </h3>
         <div class="post-content-preview">
-            Java-Map受到上篇C++ STL中map的排序方式的启发，这次又来探究一下Java中对于map的不同排序方式
+            Java-Map
+受到上篇C++ STL中map的排序方式的启发，这次又来探究一下Java中对于map的不同排序方式
 依然分为两种排序
 
 Sort By Key
 Sort By Value
 
-打印map打印map的元素使用以下的show()方法：
-1234567public static void show(Map&lt;String, Integer&gt; map) &#123;    f......
+打印map
+打印map的元素使用以下的show()方法：
+1234567public static void show(Map&lt;String, Integer&gt; map) &#123;   ......
         </div>
     </a>
     
@@ -319,13 +325,15 @@ Sort By Value
             map的排序
         </h3>
         <div class="post-content-preview">
-            STL-map近日做题用到了C++中STL的map容器，在涉及map的排序过程时，通常有两种方式进行排序
+            STL-map
+近日做题用到了C++中STL的map容器，在涉及map的排序过程时，通常有两种方式进行排序
 
-Sort by key 
+Sort by key
 Sort by value
 
 为了加深这两种排序方式的写法，我又写了一个demo来梳理两种排序方式的写法
-map的参数12345template &lt; class Key,                                     // ma......
+map的参数
+12345template &lt; class Key,                                     // m......
         </div>
     </a>
     
@@ -353,7 +361,9 @@ map的参数12345template &lt; class Key,                                     //
             Concepts
         </h3>
         <div class="post-content-preview">
-            Machine Learning-Concepts1. 数据
+            Machine Learning-Concepts
+1. 数据
+
 大写字母表示举证，大写字母表示向量
 
 
@@ -361,7 +371,7 @@ map的参数12345template &lt; class Key,                                     //
 每一行数据称为一个样本(sample)
 每一个字段表达样本的一个特征(feature)
 第i个样本写作 $ X^{(i)} $ ，第i个样本第j个特征值写作  $X^{(i)}_j $
-学习的任务：标记(label), 表示为 $ y $, 第 $i$ ......
+学习的任务：标记(label), 表示为 $ y $, 第 $i......
         </div>
     </a>
     
@@ -389,9 +399,11 @@ map的参数12345template &lt; class Key,                                     //
             hello, 2020
         </h3>
         <div class="post-content-preview">
-            Happy New Year今年的最后10分钟，又是自己独自面对着电脑。
+            Happy New Year
+
+今年的最后10分钟，又是自己独自面对着电脑。
 没有什么别的愿望，只是希望2020年别再像2019这么烂了。
-​                                                                    
+​
 2019.12.31
 23:55
 ...
@@ -422,8 +434,10 @@ map的参数12345template &lt; class Key,                                     //
             Spring Boot通过注解形式进行数据校验
         </h3>
         <div class="post-content-preview">
-            validation-apiJSR303/JSR-349，hibernate validator，spring validation之间的关系
-JSR303是一项标准,JSR-349是其的升级版本，添加了一些新特性，他们规定一些校验规范即校验注解，如@Null，@NotNull，@Pattern，他们位于javax.validation.constraints包下，只提供规范不提供实现。而h......
+            validation-api
+JSR303/JSR-349，hibernate validator，spring validation之间的关系
+
+JSR303是一项标准,JSR-349是其的升级版本，添加了一些新特性，他们规定一些校验规范即校验注解，如@Null，@NotNull，@Pattern，他们位于javax.validation.constraints包下，只提供规范不提供实现。......
         </div>
     </a>
     
@@ -451,7 +465,9 @@ JSR303是一项标准,JSR-349是其的升级版本，添加了一些新特性，
             Unit Test in Spring Boot
         </h3>
         <div class="post-content-preview">
-            Spring Boot对静态方法进行打桩问题在对Spring Boot项目进行测试的时候，会对业务逻辑service层进行测试。而service层的代码可能会使用util中的工具类，而工具方法通常来说都是static类型的方法。问题在于，当对service层的代码进行测试时，我们往往需要对静态方法打桩，返回我们需要的结果。然而，主流的测试框架Mockito并不支持对静态方法的打桩。对于此问题......
+            Spring Boot对静态方法进行打桩
+问题
+在对Spring Boot项目进行测试的时候，会对业务逻辑service层进行测试。而service层的代码可能会使用util中的工具类，而工具方法通常来说都是static类型的方法。问题在于，当对service层的代码进行测试时，我们往往需要对静态方法打桩，返回我们需要的结果。然而，主流的测试框架Mockito并不支持对静态方法的打桩。对于此......
         </div>
     </a>
     
@@ -479,19 +495,26 @@ JSR303是一项标准,JSR-349是其的升级版本，添加了一些新特性，
             redis基本使用
         </h3>
         <div class="post-content-preview">
-            redis基本配置及开关配置redis服务端
+            redis基本配置及开关
+配置redis服务端
+
+
 允许远程访问
-  注释掉 bind 127.0.0.1
+注释掉 bind 127.0.0.1
+
 
 以守护进程运行
-  将daemonize no 改为 daemonize yes
+将daemonize no 改为 daemonize yes
+
 
 Java 连接redis必须设置密码：
-  requirepass &lt;password&gt;
+requirepass &lt;password&gt;
 
 
-查看redis是否在运行1ps -ef | grep -i redis
-远程连接redis1redi......
+查看redis是否在运行
+1ps -ef | grep -i redis
+远程连接redis
+1red......
         </div>
     </a>
     
@@ -519,15 +542,19 @@ Java 连接redis必须设置密码：
             redis配置文件
         </h3>
         <div class="post-content-preview">
-            redis.conf绑定的主机地址1bind 127.0.0.1
+            redis.conf
+绑定的主机地址
+1bind 127.0.0.1
 如果需要远程访问，则需要注释掉
-守护进程1daemonize no
+守护进程
+1daemonize no
 Redis默认以非守护进程运行，如果想要改为守护进程，则设置为yes
-pidfile1pidfile /var/run/redis_6379.pid
+pidfile
+1pidfile /var/run/redis_6379.pid
 设置当Redis以守护进程运行时，它的pid写入的文件
-端口1port 6379
-指定Redis的端口
-日志记......
+端口
+1port 6379
+指定Redis的端......
         </div>
     </a>
     
