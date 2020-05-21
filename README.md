@@ -2,10 +2,10 @@
 
 ### Introduction
 
-My blog is based on **beantech theme**, adapted from https://github.com/YenYuHsuan/hexo-theme-beantech
+My blog is based on **Icarus**, adapted from https://github.com/ppoffice/hexo-theme-icarus
 
 <div align=center>
-<img src="https://camo.githubusercontent.com/905786536d4c9f111d965f29aac8bc8c36fede47/687474703a2f2f6265616e746563682e6f72672f696d672f6265616e746563682d6465736b746f702e706e67"/>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf0j4f2cfnj31ia0u0gzo.jpg"/>
 </div>
 
 
