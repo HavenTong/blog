@@ -144,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -214,40 +214,29 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="redis基本配置及开关">redis基本配置及开关</span></h1>
-<h4><span id="配置redis服务端">配置redis服务端</span></h4>
-<ul>
-<li>
-<p>允许远程访问</p>
-<p>注释掉 <code>bind 127.0.0.1</code></p>
+                <h1><span id="redis基本配置及开关">redis基本配置及开关</span></h1><h4><span id="配置redis服务端">配置redis服务端</span></h4><ul>
+<li><p>允许远程访问</p>
+<p>  注释掉 <code>bind 127.0.0.1</code></p>
 </li>
-<li>
-<p>以守护进程运行</p>
-<p>将<code>daemonize no</code> 改为 <code>daemonize yes</code></p>
+<li><p>以守护进程运行</p>
+<p>  将<code>daemonize no</code> 改为 <code>daemonize yes</code></p>
 </li>
-<li>
-<p><code>Java</code> 连接redis必须设置密码：</p>
-<p><code>requirepass &lt;password&gt;</code></p>
+<li><p><code>Java</code> 连接redis必须设置密码：</p>
+<p>  <code>requirepass &lt;password&gt;</code></p>
 </li>
 </ul>
-<h5><span id="查看redis是否在运行">查看redis是否在运行</span></h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -i redis</span><br></pre></td></tr></table></figure>
-<h5><span id="远程连接redis">远程连接redis</span></h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h &lt;ip&gt; -p &lt;port&gt; -a &lt;password&gt;</span><br></pre></td></tr></table></figure>
-<h5><span id="redis关闭">redis关闭</span></h5>
-<ul>
-<li>
-<p>断电(非正常关闭，容易数据丢失)</p>
-<p>查询PID:</p>
+<h5><span id="查看redis是否在运行">查看redis是否在运行</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -i redis</span><br></pre></td></tr></table></figure>
+<h5><span id="远程连接redis">远程连接redis</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h &lt;ip&gt; -p &lt;port&gt; -a &lt;password&gt;</span><br></pre></td></tr></table></figure>
+<h5><span id="redis关闭">redis关闭</span></h5><ul>
+<li><p>断电(非正常关闭，容易数据丢失)</p>
+<p>  查询PID: </p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -i redis</span><br><span class="line"><span class="comment"># Then</span></span><br><span class="line"><span class="built_in">kill</span> -9 &lt;PID&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p><strong>通过客户端关闭(正常关闭，数据保存)</strong></p>
+<li><p><strong>通过客户端关闭(正常关闭，数据保存)</strong></p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHUTDOWN</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5><span id="redis加载配置文件开启">redis加载配置文件开启</span></h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /usr/<span class="built_in">local</span>/redis/redis.conf</span><br></pre></td></tr></table></figure>
+<h5><span id="redis加载配置文件开启">redis加载配置文件开启</span></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /usr/<span class="built_in">local</span>/redis/redis.conf</span><br></pre></td></tr></table></figure>
 
                 
 
@@ -390,6 +379,7 @@
     }
 </style>
 
+<script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.0.5/es5/tex-chtml-full.js"></script>
 
 
     <!-- Footer -->

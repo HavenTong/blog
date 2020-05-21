@@ -144,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -214,12 +214,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="spring-boot对静态方法进行打桩">Spring Boot对静态方法进行打桩</span></h1>
-<h3><span id="问题">问题</span></h3>
-<p>在对Spring Boot项目进行测试的时候，会对业务逻辑service层进行测试。而service层的代码可能会使用util中的工具类，而工具方法通常来说都是static类型的方法。问题在于，当对service层的代码进行测试时，我们往往需要对静态方法打桩，返回我们需要的结果。然而，主流的测试框架Mockito并不支持对静态方法的打桩。对于此问题，我们需要寻求其他框架的解决方案</p>
-<h3><span id="解决">解决</span></h3>
-<h4><span id="1">1.</span></h4>
-<p>首先，通过mockito官方文档<a href="https://github.com/mockito/mockito/wiki/FAQ" target="_blank" rel="noopener"></a>的描述，可以发现：</p>
+                <h1><span id="spring-boot对静态方法进行打桩">Spring Boot对静态方法进行打桩</span></h1><h3><span id="问题">问题</span></h3><p>在对Spring Boot项目进行测试的时候，会对业务逻辑service层进行测试。而service层的代码可能会使用util中的工具类，而工具方法通常来说都是static类型的方法。问题在于，当对service层的代码进行测试时，我们往往需要对静态方法打桩，返回我们需要的结果。然而，主流的测试框架Mockito并不支持对静态方法的打桩。对于此问题，我们需要寻求其他框架的解决方案</p>
+<h3><span id="解决">解决</span></h3><h4><span id="1">1.</span></h4><p>首先，通过mockito官方文档<a href="https://github.com/mockito/mockito/wiki/FAQ" target="_blank" rel="noopener"></a>的描述，可以发现：</p>
 <blockquote>
 <p>What are the limitations of Mockito</p>
 <ul>
@@ -247,48 +243,41 @@
 <p>可以看出，Powermock当前最新版本仅支持到JUnit4.12，而无法对JUnit5提供支持。然而，spring-boot-starter-test中，整合的已是JUnit5. 在网上找寻了众多的回答，所有的例子都是通过JUnit4编写的测试脚本。</p>
 <p>且通过Powermock测试的脚本结构如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(PowerMockRunner.class)</span><br><span class="line"><span class="meta">@PrepareForTest</span>( &#123; YourClassWithEgStaticMethod.class &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YourTestCase</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该结构为JUnit4的写法，并不能在JUnit5中使用。我也尝试强行在Spring Boot项目中单独添加JUnit4依赖，然后单独通过JUnit4来运行通过Powermock编写的测试脚本，多次尝试之后依然无法运行。于是转向另一个框架–JMockit。</p>
-<h4><span id="2">2.</span></h4>
-<p>尝试通过JMockit来测试静态方法。首先查看JMockit是否支持JUnit5，在官网<a href="https://jmockit.github.io/tutorial/Introduction.html#runningTests" target="_blank" rel="noopener"></a>寻找到了答案：</p>
+<p>该结构为JUnit4的写法，并不能在JUnit5中使用。我也尝试强行在Spring Boot项目中单独添加JUnit4依赖，然后单独通过JUnit4来运行通过Powermock编写的测试脚本，多次尝试之后依然无法运行。于是转向另一个框架—JMockit。</p>
+<h4><span id="2">2.</span></h4><p>尝试通过JMockit来测试静态方法。首先查看JMockit是否支持JUnit5，在官网<a href="https://jmockit.github.io/tutorial/Introduction.html#runningTests" target="_blank" rel="noopener"></a>寻找到了答案：</p>
 <blockquote>
 <p>To run tests that use any of the JMockit APIs, use your Java IDE, Maven/Gradle build script, etc. the way you normally would. In principle, any JDK of version <strong>1.7</strong> or newer, on Windows, Mac OS X, or Linux, can be used. JMockit supports (and requires) the use of <strong>JUnit (version 4 or 5)</strong> or TestNG</p>
 </blockquote>
 <p>既然JMockit支持JUnit5，且可以对静态方法进行打桩，这就是一种可行的解决方案。所以接下来我就去寻找对静态方法进行打桩的实现方案。</p>
 <p>在一篇博客中，我发现了解决方案：</p>
 <ul>
-<li>
-<p>首先，需要添加JMockit的依赖，通过mvnrepository添加最新版的JMockit依赖：</p>
+<li><p>首先，需要添加JMockit的依赖，通过mvnrepository添加最新版的JMockit依赖：</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.jmockit/jmockit --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jmockit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jmockit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.48<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>查看博客中给出的例子：</p>
+<li><p>查看博客中给出的例子：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要测试的类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppManager</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">managerResponse</span><span class="params">(String question)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> AppManager.isResponsePositive(question);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isResponsePositive</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> length = value.length();</span><br><span class="line">        <span class="keyword">int</span> randomNumber = randomNumber();</span><br><span class="line">        <span class="keyword">return</span> length == randomNumber ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">randomNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Random().nextInt(<span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对静态方法进行打桩</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">givenAppManager_whenStaticMethodCalled_thenValidateExpectedResponse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">new</span> MockUp&lt;AppManager&gt;() &#123;</span><br><span class="line">        <span class="meta">@Mock</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isResponsePositive</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    assertFalse(appManager.managerResponse(<span class="string">"Some string..."</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>按照类似的写法，完成了我的测试脚本的编写</p>
+<li><p>按照类似的写法，完成了我的测试脚本的编写</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"发送邮件内容正确"</span>)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shouldSendCorrectEmailWhenUserIsNew</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="comment">// 使用JMockit对静态方法进行打桩</span></span><br><span class="line">  <span class="keyword">new</span> MockUp&lt;CheckCodeUtil&gt;()&#123;</span><br><span class="line">      <span class="meta">@mockit</span>.Mock</span><br><span class="line">      <span class="function"><span class="keyword">public</span> String <span class="title">generateCheckCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">      	<span class="keyword">return</span> <span class="string">"123456"</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">   &#125;;</span><br><span class="line">  when(redisTemplate.opsForValue()).thenReturn(<span class="keyword">new</span> ValueOperationsFake());</span><br><span class="line">  ArgumentCaptor&lt;String&gt; emailCaptor = ArgumentCaptor.forClass(String.class);</span><br><span class="line">  ArgumentCaptor&lt;String&gt; subjectCaptor = ArgumentCaptor.forClass(String.class);</span><br><span class="line">  ArgumentCaptor&lt;String&gt; contentCaptor = ArgumentCaptor.forClass(String.class);</span><br><span class="line">  customerService.sendCheckCode(<span class="string">"10175101152@stu.ecnu.edu.cn"</span>);</span><br><span class="line">  verify(mailService, times(<span class="number">1</span>))</span><br><span class="line">                .sendHtmlMail(emailCaptor.capture(), subjectCaptor.capture(), 			contentCaptor.capture());</span><br><span class="line">  assertAll(</span><br><span class="line">                () -&gt; assertEquals(<span class="string">"10175101152@stu.ecnu.edu.cn"</span>, emailCaptor.getValue()),</span><br><span class="line">                () -&gt; assertEquals(<span class="string">"Registration from MeetHere"</span>, subjectCaptor.getValue()),</span><br><span class="line">                () -&gt; assertEquals(<span class="string">"&lt;h1&gt;Welcome to MeetHere!&lt;/h1&gt;&lt;p&gt;Your check code is &lt;u&gt;"</span> +</span><br><span class="line">                        <span class="string">"123456"</span> + <span class="string">"&lt;/u&gt;&lt;/p&gt;"</span>, contentCaptor.getValue())</span><br><span class="line">        );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>编写完毕后，尝试是否可以运行，但是依然报错：</p>
+<li><p>编写完毕后，尝试是否可以运行，但是依然报错：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalStateException: JMockit didn<span class="string">'t get initialized; please check the -javaagent JVM initialization parameter was used</span></span><br></pre></td></tr></table></figure>
-<p>针对报错信息去Google进行查找，大多数的解决方案是：</p>
+<p>  针对报错信息去Google进行查找，大多数的解决方案是：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(JMockit.class)</span><br></pre></td></tr></table></figure>
-<p>这同样是JUnit4的写法。并不能解决我所遇到的问题</p>
+<p>  这同样是JUnit4的写法。并不能解决我所遇到的问题</p>
 </li>
-<li>
-<p>再次回到JMockit的官方文档，查看官方文档中给出的运行方法，发现了潜在的解决方案：</p>
+<li><p>再次回到JMockit的官方文档，查看官方文档中给出的运行方法，发现了潜在的解决方案：</p>
 <blockquote>
 <p>JMockit also requires the <code>-javaagent</code> JVM initialization parameter to be used; when using the <strong>Maven Surefire</strong> plugin for test execution, it’s specified as follows:</p>
 </blockquote>
-<p>所以看来想要运行JMockito编写的测试脚本，需要指定<code>-javaagent</code>的JVM参数才可以。</p>
-<p>官网给出了方案：</p>
+<p>  所以看来想要运行JMockito编写的测试脚本，需要指定<code>-javaagent</code>的JVM参数才可以。</p>
+<p>  官网给出了方案：</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.22.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- or some other version --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">argLine</span>&gt;</span></span><br><span class="line">            -javaagent:$&#123;settings.localRepository&#125;/org/jmockit/jmockit/$&#123;jmockit.version&#125;/jmockit-$&#123;jmockit.version&#125;.jar</span><br><span class="line">         <span class="tag">&lt;/<span class="name">argLine</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>将这段xml复制到pom文件中，并将<code>${jmockit.version}</code>替换为项目中使用的<code>1.48</code></p>
+<p>  将这段xml复制到pom文件中，并将<code>${jmockit.version}</code>替换为项目中使用的<code>1.48</code></p>
 </li>
-<li>
-<p>再次运行测试脚本：</p>
-  <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9rsjdzew8j30j006o759.jpg" alt="屏幕快照 2019-12-10 下午6.12.39" style="zoom:50%;">
-<p><strong>BINGO!</strong></p>
+<li><p>再次运行测试脚本：</p>
+<p>  <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9rsjdzew8j30j006o759.jpg" alt="屏幕快照 2019-12-10 下午6.12.39" style="zoom:50%;"></p>
+<p>  <strong>BINGO!</strong></p>
 </li>
 </ul>
 
@@ -433,6 +422,7 @@
     }
 </style>
 
+<script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.0.5/es5/tex-chtml-full.js"></script>
 
 
     <!-- Footer -->
